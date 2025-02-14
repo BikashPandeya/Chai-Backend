@@ -1,13 +1,13 @@
-const asyncHandler = (requestHandler) => {   //It is a higher-order function (a function that returns another function).
-    (req , res , next) => {
-        Promise.resolve(requestHandler(req,res,next)).catch((err) => next(err))
-    }
-}
+// A higher-order function that takes an async request handler and automatically handles errors
+const asyncHandler = (requestHandler) => {   
+    return (req, res, next) => {  // This function is returned and used in route handlers
+        Promise.resolve(requestHandler(req, res, next))
+            .catch((err) => next(err)); // If an error occurs, pass it to Express error handling
+    };
+};
 
-
-
-
-export{asyncHandler}
+// Exporting the asyncHandler function for use in route files
+export { asyncHandler };
 
 
 // const asyncHandler = () => {}
