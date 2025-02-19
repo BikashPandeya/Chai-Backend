@@ -4,6 +4,8 @@ import dotenv from "dotenv";
 // Import the MongoDB connection function
 import connectDB from "./db/index.js";
 
+import { app } from "./app.js";
+
 // Load environment variables from the specified file
 dotenv.config({
     path: "./env" // Loads variables from the 'env' file into process.env
